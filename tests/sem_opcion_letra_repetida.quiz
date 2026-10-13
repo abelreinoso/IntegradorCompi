@@ -1,0 +1,7 @@
+EXAMEN "Examen Con Letra de Opción Repetida"
+PUNTAJE_MINIMO 1
+
+PREGUNTA_MULTIPLE "¿Pregunta con letras repetidas?" PUNTOS 1 {
+  a) "Primera opción" [CORRECTA]
+  a) "Segunda opción con letra a repetida"
+}

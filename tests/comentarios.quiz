@@ -1,0 +1,15 @@
+// Comentario inicial de una sola línea
+EXAMEN "Examen de Verificación de Comentarios"
+/* Comentario de bloque
+   multilínea antes de la configuración */
+PUNTAJE_MINIMO 2
+
+// Pregunta 1
+PREGUNTA_MULTIPLE "¿Se ignoran correctamente los comentarios en línea y en bloque?" PUNTOS 1 {
+  a) "Sí" [CORRECTA] // Comentario al final de opción
+  b) "No"
+}
+
+/* Pregunta 2 de tipo VF */
+PREGUNTA_VF "¿El Scanner de Coco/R descarta comentarios configurados con COMMENTS FROM...?" PUNTOS 1 = VERDADERO
+// Fin del examen

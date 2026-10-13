@@ -1,0 +1,7 @@
+EXAMEN "Examen Con Múltiples Opciones Correctas"
+PUNTAJE_MINIMO 1
+
+PREGUNTA_MULTIPLE "¿Cuál es la respuesta correcta?" PUNTOS 1 {
+  a) "Primera opción" [CORRECTA]
+  b) "Segunda opción" [CORRECTA]
+}

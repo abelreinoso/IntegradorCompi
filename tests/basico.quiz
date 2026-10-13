@@ -1,0 +1,10 @@
+EXAMEN "Examen Básico"
+PUNTAJE_MINIMO 2
+
+PREGUNTA_MULTIPLE "¿Cuál es la capital de Francia?" PUNTOS 1 {
+  a) "Madrid"
+  b) "París" [CORRECTA]
+  c) "Roma"
+}
+
+PREGUNTA_VF "¿El sol es una estrella?" PUNTOS 1 = VERDADERO

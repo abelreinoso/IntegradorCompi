@@ -1,0 +1,21 @@
+EXAMEN "Examen de Compiladores 2026"
+PUNTAJE_MINIMO 8
+
+PREGUNTA_MULTIPLE "¿Qué tipo de analizador sintáctico genera Coco/R a partir de una especificación ATG?" PUNTOS 2 {
+  a) "Descendente recursivo LL(1)" [CORRECTA]
+  b) "Ascendente LR(1)"
+  c) "Ascendente LALR(1)"
+  d) "Tabla SLR(1)"
+}
+
+PREGUNTA_VF "¿Un analizador LL(1) puede resolver gramáticas que contienen recursión por izquierda directa sin transformarlas?" PUNTOS 2 = FALSO
+
+PREGUNTA_MULTIPLE "¿Qué condición deben cumplir las opciones alternativas A -> alfa | beta para que la gramática sea LL(1)?" PUNTOS 2 {
+  a) "FIRST(alfa) y FIRST(beta) deben ser conjuntos disjuntos" [CORRECTA]
+  b) "FOLLOW(A) debe ser igual a FIRST(alfa)"
+  c) "La gramática debe ser ambigua"
+}
+
+PREGUNTA_VF "¿La tabla de símbolos permite almacenar atributos y validar reglas de contexto durante el análisis semántico?" PUNTOS 2 = VERDADERO
+
+PREGUNTA_TEXTO "Nombre de la fase del compilador que transforma el flujo de caracteres en una secuencia de tokens" PUNTOS 2 RESPUESTA "Scanner"

@@ -1,0 +1,19 @@
+## Build and binary directories
+bin/
+obj/
+[Bb]in/
+[Oo]bj/
+
+## Visual Studio & VS Code cache / temporary files
+.vs/
+.vscode/
+*.user
+*.suo
+*.useroscc
+*.sln.docstates
+
+## OS files
+.DS_Store
+Thumbs.db
+
+*.old

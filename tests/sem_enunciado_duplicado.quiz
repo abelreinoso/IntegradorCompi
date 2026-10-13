@@ -1,0 +1,5 @@
+EXAMEN "Examen con Preguntas Duplicadas"
+PUNTAJE_MINIMO 2
+
+PREGUNTA_VF "¿La Tierra gira alrededor del Sol?" PUNTOS 1 = VERDADERO
+PREGUNTA_VF "¿La Tierra gira alrededor del Sol?" PUNTOS 1 = VERDADERO

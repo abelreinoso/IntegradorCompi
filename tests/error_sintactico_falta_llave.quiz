@@ -1,0 +1,5 @@
+EXAMEN "Examen con Error Sintáctico"
+
+PREGUNTA_MULTIPLE "¿Pregunta sin cerrar llave?" {
+  a) "Opción A" [CORRECTA]
+  b) "Opción B"

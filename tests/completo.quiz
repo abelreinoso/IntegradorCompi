@@ -1,0 +1,19 @@
+EXAMEN "Examen Completo de Ciencias y Computación"
+PUNTAJE_MINIMO 5
+
+PREGUNTA_MULTIPLE "¿Cuál de las siguientes estructuras es de tipo FIFO?" PUNTOS 2 {
+  a) "Pila"
+  b) "Cola" [CORRECTA]
+  c) "Árbol"
+  d) "Grafo"
+}
+
+PREGUNTA_VF "¿HTTP es un protocolo de capa de transporte?" PUNTOS 1 = FALSO
+
+PREGUNTA_TEXTO "Nombre de la unidad central de procesamiento (siglas)" PUNTOS 2 RESPUESTA "CPU"
+
+PREGUNTA_MULTIPLE "¿Cuál es el valor binario del decimal 5?" PUNTOS 1 {
+  a) "101" [CORRECTA]
+  b) "110"
+  c) "011"
+}

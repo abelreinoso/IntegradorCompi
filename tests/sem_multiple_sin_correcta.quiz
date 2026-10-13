@@ -1,0 +1,7 @@
+EXAMEN "Examen Sin Opción Correcta"
+PUNTAJE_MINIMO 1
+
+PREGUNTA_MULTIPLE "¿Cuál es la respuesta correcta?" PUNTOS 1 {
+  a) "Primera opción"
+  b) "Segunda opción"
+}

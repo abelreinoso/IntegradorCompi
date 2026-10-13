@@ -1,0 +1,120 @@
+using QuizLang.Core.Modelo;
+
+COMPILER QuizLang
+
+  public SymbolTable symbolTable;
+  public Examen Examen => symbolTable?.Examen;
+
+  private static string Unquote(string s) {
+      if (string.IsNullOrEmpty(s)) return "";
+      if (s.StartsWith("\"") && s.EndsWith("\"") && s.Length >= 2) {
+          s = s.Substring(1, s.Length - 2);
+      }
+      return s.Replace("\\\"", "\"")
+              .Replace("\\\\", "\\")
+              .Replace("\\n", "\n")
+              .Replace("\\r", "\r")
+              .Replace("\\t", "\t");
+  }
+
+CHARACTERS
+  letter = 'a' .. 'z' + 'A' .. 'Z' .
+  digit  = '0' .. '9' .
+  cr     = '\r' .
+  lf     = '\n' .
+  stringChar = ANY - '"' - '\\' - cr - lf .
+  printable  = ' ' .. '~' .
+
+TOKENS
+  letra  = letter .
+  number = digit { digit } .
+  string = '"' { stringChar | '\\' printable } '"' .
+
+COMMENTS FROM "//" TO "\n"
+COMMENTS FROM "/*" TO "*/"
+IGNORE ' ' + '\t' + '\r' + '\n'
+
+PRODUCTIONS
+
+  QuizLang =
+    (. symbolTable = new SymbolTable(errors); .)
+    "EXAMEN" string
+    (. symbolTable.SetExamen(Unquote(t.val), t.line, t.col); .)
+    [ Config ]
+    { Pregunta }
+    (. symbolTable.ValidarExamen(); .)
+    .
+
+  Config =
+    "PUNTAJE_MINIMO" number
+    (.
+       int puntajeMin = int.Parse(t.val);
+       symbolTable.SetConfig(puntajeMin, t.line, t.col);
+    .)
+    .
+
+  Pregunta =
+    Multiple | Texto | VerdaderoFalso .
+
+  Multiple (.
+    var pm = new PreguntaMultiple();
+    pm.Puntos = 1;
+    Opcion op;
+  .) =
+    "PREGUNTA_MULTIPLE" string
+    (.
+       pm.Enunciado = Unquote(t.val);
+       pm.Line = t.line;
+       pm.Col = t.col;
+    .)
+    [ "PUNTOS" number (. pm.Puntos = int.Parse(t.val); .) ]
+    "{"
+      Opcion<out op> (. pm.Opciones.Add(op); .)
+      { Opcion<out op> (. pm.Opciones.Add(op); .) }
+    "}"
+    (. symbolTable.ValidarYAgregarPreguntaMultiple(pm); .)
+    .
+
+  Opcion<out Opcion op> (.
+    op = new Opcion();
+  .) =
+    letra (. op.Letra = t.val[0]; op.Line = t.line; op.Col = t.col; .)
+    ")"
+    string (. op.Texto = Unquote(t.val); .)
+    [ "[CORRECTA]" (. op.EsCorrecta = true; .) ]
+    .
+
+  Texto (.
+    var pt = new PreguntaTexto();
+    pt.Puntos = 1;
+  .) =
+    "PREGUNTA_TEXTO" string
+    (.
+       pt.Enunciado = Unquote(t.val);
+       pt.Line = t.line;
+       pt.Col = t.col;
+    .)
+    [ "PUNTOS" number (. pt.Puntos = int.Parse(t.val); .) ]
+    [ "RESPUESTA" string (. pt.RespuestaCorrecta = Unquote(t.val); .) ]
+    (. symbolTable.ValidarYAgregarPreguntaTexto(pt); .)
+    .
+
+  VerdaderoFalso (.
+    var pvf = new PreguntaVF();
+    pvf.Puntos = 1;
+  .) =
+    "PREGUNTA_VF" string
+    (.
+       pvf.Enunciado = Unquote(t.val);
+       pvf.Line = t.line;
+       pvf.Col = t.col;
+    .)
+    [ "PUNTOS" number (. pvf.Puntos = int.Parse(t.val); .) ]
+    "="
+    ( "VERDADERO" (. pvf.RespuestaCorrecta = true; .)
+    | "FALSO"     (. pvf.RespuestaCorrecta = false; .)
+    )
+    (. symbolTable.ValidarYAgregarPreguntaVF(pvf); .)
+    .
+
+END QuizLang.

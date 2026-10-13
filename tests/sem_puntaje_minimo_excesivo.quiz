@@ -1,0 +1,4 @@
+EXAMEN "Examen Con Puntaje Mínimo Excesivo"
+PUNTAJE_MINIMO 10
+
+PREGUNTA_VF "¿Pregunta de un solo punto?" PUNTOS 1 = VERDADERO
