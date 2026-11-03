@@ -758,6 +758,8 @@ El script de PowerShell `run_tests.ps1` compila la solución y ejecuta sistemát
 | **12**| `sem_opcion_letra_repetida.quiz`| Error Semántico | Pregunta con dos alternativas con la misma letra `a)` | `linea 6 col 3: Letra de opción duplicada 'a'...` | **PASS** |
 | **13**| `sem_puntaje_minimo_excesivo.quiz`| Error Semántico| `PUNTAJE_MINIMO` mayor al puntaje acumulado total | `linea 2 col 16: El puntaje mínimo (10) es mayor al total de puntos del examen (1).` | **PASS** |
 
+El detalle de cada prueba se encuentra en el documento complementario [Informe de pruebas](informe_pruebas.md).
+
 **Resultado Global Verificado:** **13 / 13 pruebas aprobadas (PASS)** con 0 errores y 0 advertencias de compilación.
 
 ---
